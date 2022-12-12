@@ -1,6 +1,5 @@
 <?php 
 session_start();
-
 if(isset($_SESSION['auth'])){
     $_SESSION['message'] = "You are already logged in";
     header('Location: index.php');
@@ -19,18 +18,10 @@ include('includes/header.php'); ?>
                 </div>
                 <?php unset($_SESSION['message']); }?>
                 <div class="card-header">
-                    <h2>Register</h2>
+                    <h2>Login</h2>
                 </div>
                 <div class="card-body">
                     <form action="functions/authcode.php" method="POST">
-                        <div class="mb-3">
-                            <label class="form-label">Name</label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Phone</label>
-                            <input type="number" class="form-control" name="phone" id="phone" placeholder="Enter your phone number">
-                        </div>
                         <div class="mb-3">
                             <label class="form-label">Email Address</label>
                             <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email addres">
@@ -39,15 +30,7 @@ include('includes/header.php'); ?>
                             <label class="form-label">Password</label>
                             <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" name="cpassword" id="confirm-password" placeholder="Confirm password">
-                        </div>
-                        <!--<div class="mb-3">
-                            <label class="form-label">Remember me</label>
-                            <input type="checkbox" class="form-check-input" id="checkbox">
-                        </div>-->
-                        <button type="submit" name="register_btn" class="btn btn-primary">Submit</button>
+                        <button type="submit" name="login_btn" class="btn btn-primary">Login</button>
                     </form>
                 </div>
             </div>

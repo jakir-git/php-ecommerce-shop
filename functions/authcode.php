@@ -12,7 +12,7 @@ if(isset($_POST['register_btn'])){
     //Check if the email is already registered
     $query_email = "SELECT email FROM users WHERE email='$email'";
     $run_email_query = mysqli_query($db_connect, $query_email);
-    
+
     if(mysqli_num_rows($run_email_query) > 0){
         $_SESSION['message'] = "Email already exists";
         header('Location: ../register.php');
@@ -20,8 +20,8 @@ if(isset($_POST['register_btn'])){
     else{
         if($password == $cpassword){
             //Insert query
-            $inser_query = "INSERT INTO users(name,email,phone,password) VALUES('$name','$email','$phone','$password')";
-            $inser_db   = mysqli_query($db_connect, $inser_query);
+            $insert_query = "INSERT INTO users(name,email,phone,password) VALUES('$name','$email','$phone','$password')";
+            $inser_db   = mysqli_query($db_connect, $insert_query);
 
             if($inser_db){
                 $_SESSION['message'] = "Registered Success";
@@ -35,6 +35,35 @@ if(isset($_POST['register_btn'])){
             $_SESSION['message'] = "Password don't match";
             header('Location: ../register.php');
         }
+    }
+
+}
+else if(isset($_POST['login_btn'])){
+    $email      = mysqli_real_escape_string($db_connect, $_POST['email']);
+    $password   = mysqli_real_escape_string($db_connect, $_POST['password']);
+
+    $fetch_user = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+    $fetch_result = mysqli_query($db_connect, $fetch_user);
+
+    if(mysqli_num_rows($fetch_result) > 0 ){
+
+        $_SESSION['auth'] = true;
+
+        $user_data  = mysqli_fetch_array($fetch_result);
+        $username   = $user_data['name'];
+        $useremail  = $user_data['email'];
+
+        $_SESSION['auth_user'] = [
+            'name' => $username,
+            'email' => $useremail
+        ];
+
+        $_SESSION['message'] = "Logged In Successfully";
+        header('Location: ../index.php');
+
+    }else{
+        $_SESSION['message'] = "Invalid credentials";
+        header('Location: ../login.php');
     }
 
 }
