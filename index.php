@@ -1,4 +1,7 @@
 <?php include('includes/header.php'); ?>
 
-    <h1 class="btn btn-primary">Hello, world!</h1>
+    <div class="container">
+        <h2>Home</h2>
+    </div>
+
 <?php include('includes/footer.php'); ?>
