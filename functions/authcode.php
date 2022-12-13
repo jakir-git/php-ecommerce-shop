@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('../config/dbcon.php');
+include('myfunctions.php');
 
 if(isset($_POST['register_btn'])){
     $name       = mysqli_real_escape_string($db_connect, $_POST['name']);
@@ -14,8 +15,7 @@ if(isset($_POST['register_btn'])){
     $run_email_query    = mysqli_query($db_connect, $query_email);
 
     if(mysqli_num_rows($run_email_query) > 0){
-        $_SESSION['message'] = "Email already exists";
-        header('Location: ../register.php');
+        redirect_with_message("../register.php", "Email already exists");
     }
     else{
         if($password == $cpassword){
@@ -24,16 +24,13 @@ if(isset($_POST['register_btn'])){
             $inser_db       = mysqli_query($db_connect, $insert_query);
 
             if($inser_db){
-                $_SESSION['message'] = "Registered Success";
-                header('Location: ../login.php');
+                redirect_with_message("../login.php", "Registered Success");
             }else{
-                $_SESSION['message'] = "Something went problem";
-                header('Location: ../register.php');
+                redirect_with_message("../register.php", "Something went problem");
             }
 
         }else{
-            $_SESSION['message'] = "Password don't match";
-            header('Location: ../register.php');
+            redirect_with_message("../register.php", "Password don't match");
         }
     }
 
@@ -65,13 +62,11 @@ else if(isset($_POST['login_btn'])){
             $_SESSION['message'] = "Welcome To Dashboard";
             header('Location: ../admin/index.php');
         }else{
-            $_SESSION['message'] = "Logged In Successfully";
-            header('Location: ../index.php');
+            redirect_with_message("../index.php", "Logged In Successfully");
         }
 
     }else{
-        $_SESSION['message'] = "Invalid credentials";
-        header('Location: ../login.php');
+        redirect_with_message("../login.php", "Invalid credentials");
     }
 
 }

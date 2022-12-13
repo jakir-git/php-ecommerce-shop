@@ -1,11 +1,10 @@
 <?php
+include('../functions/myfunctions.php');
 
 if(isset($_SESSION['auth'])){
     if($_SESSION['auth_user']['user_role'] != 1){
-        $_SESSION['message'] = "You are not authorized to access this page";
-        header('Location: ../index.php');
+        redirect_with_message("../index.php", "You are not authorized to access this page");
     }
 }else{
-    $_SESSION['message'] = "Please Login to continue";
-    header('Location: ../login.php');
+    redirect_with_message("../login.php", "Please Login to continue");
 }
