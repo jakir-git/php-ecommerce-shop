@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card add-category-form">
                 <div class="card-header">
                     <h3>Add Category</h3>
                 </div>
@@ -50,7 +50,7 @@
                                 <input type="checkbox" name="popular">
                             </div>   
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary" name="add_category_btn">Submit</button>
                             </div>                     
                         </div>
                     </form>
