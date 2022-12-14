@@ -2,7 +2,7 @@
     border: 1px solid;
     padding: 5px 10px;
 }
-.all-category-table tbody img{
+.all-category-table tbody img, .edit-category img{
     max-width: 60px;
     height: auto;
 }

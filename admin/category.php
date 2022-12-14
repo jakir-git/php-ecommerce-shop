@@ -33,7 +33,9 @@
                                             <img src="../uploads/<?= $item['image']; ?>" alt="<?= $item['name']; ?>">
                                         </td>
                                         <td><?= $item['status'] == '0' ? 'Visible' : 'Hidden'; ?></td>
-                                        <td>Edit</td>
+                                        <td>
+                                            <a href="edit-category.php?id=<?= $item['id']; ?>" class="btn btn-primary">Edit</a>
+                                        </td>
                                     </tr>
                         <?php } } else{ echo "No category found"; }?>
                         </tbody>
