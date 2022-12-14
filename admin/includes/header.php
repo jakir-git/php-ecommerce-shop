@@ -20,6 +20,11 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="assets/css/material-dashboard.min.css?v=3.0.0" rel="stylesheet" />
   <link id="custom-style" href="assets/css/custom.css" rel="stylesheet" />
+
+  <!-- Alertify CSS -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+  <!-- Alertify Bootstrap theme -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
