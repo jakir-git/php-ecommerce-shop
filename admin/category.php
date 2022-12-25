@@ -18,7 +18,7 @@
                                 <th>Name</th>
                                 <th>Image</th>
                                 <th>Status</th>
-                                <th>Edit</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,6 +35,10 @@
                                         <td><?= $item['status'] == '0' ? 'Visible' : 'Hidden'; ?></td>
                                         <td>
                                             <a href="edit-category.php?id=<?= $item['id']; ?>" class="btn btn-primary">Edit</a>
+                                            <form action="admin-functions.php" method="POST">
+                                                <input type="hidden" name="category_id" value="<?= $item['id']; ?>">
+                                                <button type="submit" clas="btn btn-danger" name="category_delete_btn">Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                         <?php } } else{ echo "No category found"; }?>

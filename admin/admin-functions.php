@@ -27,7 +27,7 @@ if(isset($_POST['add_category_btn'])){
 
     if($category_query_run){
         move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$file_name);
-        redirect_with_message("add-category.php", "Category Added Successfully");
+        redirect_with_message("category.php", "Category Added Successfully");
     }else{
         redirect_with_message("add-category.php", "Something went wrong");
     }
@@ -60,10 +60,30 @@ if(isset($_POST['add_category_btn'])){
     if($update_query_run){
         if($new_image != ''){
             move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$new_image);
-            if(file_exists('../uploads'.$old_image)){
-                unlink('../uploads'.$old_image);
+            if(file_exists('../uploads/'.$old_image)){
+                unlink('../uploads/'.$old_image);
             }
         }
         redirect_with_message('edit-category.php?id='.$category_id, 'Categroy update successfully');
+    }
+}else if(isset($_POST['category_delete_btn'])){
+    $category_id    = mysqli_real_escape_string($db_connect, $_POST['category_id']);
+
+    $image_query    = "SELECT * FROM categories WHERE id='$category_id'";
+    $query_result   = mysqli_query($db_connect, $image_query);
+    $query_data     = mysqli_fetch_array($query_result);
+    $image_name     = $query_data['image'];
+    var_dump($image_name);
+
+    $delete_query   = "DELETE FROM categories WHERE id='$category_id'";
+    $run_query      = mysqli_query($db_connect, $delete_query);
+
+    if($run_query){
+        if(file_exists('../uploads/'.$image_name)){
+            unlink('../uploads/'.$image_name);
+        }
+        redirect_with_message('category.php', 'Categroy deleted successfully');
+    }else{
+        redirect_with_message('category.php', 'Something went wrong');
     }
 }
