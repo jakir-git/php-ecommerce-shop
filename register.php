@@ -33,11 +33,11 @@ include('includes/header.php'); ?>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email Address</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email addres">
+                            <input required type="email" class="form-control" name="email" id="email" placeholder="Enter your email addres">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
+                            <input required type="password" class="form-control" name="password" id="password" placeholder="Enter password">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Confirm Password</label>
