@@ -29,6 +29,7 @@ include('includes/header.php'); ?>
                         <div class="mb-3">
                             <label class="form-label">Password</label>
                             <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
+                            <input type="checkbox" onclick="showTypePassword()">Show Password
                         </div>
                         <button type="submit" name="login_btn" class="btn btn-primary">Login</button>
                     </form>
